@@ -22,12 +22,12 @@ const createGame = async (newGameData) => {
     return result
 }
 
-// const findGameByName = async (name) => {
-//     let gameCollection = await getCollection ("game")
-//     let gameCursor = await gameCollection.find({name : name});
-//     let gameArray = await gameCursor.toArray();
-//     console.log("game is", gameArray)
-// };
+const findGameByName = async (name) => {
+let gameCollection = await getCollection ("game")
+    let gameCursor = await gameCollection.find({name : name});
+    let gameArray = await gameCursor.toArray();
+    console.log("game is", gameArray)
+};
 
 const findGameById = async (id) => {
     let gameCollection = await getCollection("game")
