@@ -96,7 +96,7 @@ app.get('/gameResultThisTime', (req, res) => {
   // let game = await updateGameById(gameId, {winnerThisTime: winnerThisTime})
   if (winnerThisTime === "draw") {
     res.send(`The game is ${winnerThisTime} !!!. To continue please please go to:\n
-curl "http://localhost:8080/player1Selection?selection1={selection1}"\n`)
+curl "http://localhost:8080/player1Selection?gameId=${gameId}&selection1={selection1}"\n`)
   } else {
     res.send(`The winner for this time is ${winnerThisTime}. To continue the game please go to:\n
 curl "http://localhost:8080/gameFinalResult"\n`)

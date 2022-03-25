@@ -55,7 +55,7 @@ const checkIfGameOver = (countp1, countp2, numberOfPlays, player1, player2, game
     return `The game is over. ${player1Name} won ${countp1} time(s), ${player2Name} won ${countp2} time(s) out of ${countp1+ countp2+ countDraw} total plays.`
   } else {
     return `The game ISNOT over. Please continue playing the game by using this link:,\n
-curl "http://localhost:8080/player1Selection?gameId=${gameId}&selection1={selection1}"\n`
+curl "http://localhost:8080/player1Selection?selection1={selection1}"\n`
   }
 }
 
