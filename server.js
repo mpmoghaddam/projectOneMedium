@@ -92,11 +92,11 @@ curl "http://localhost:8080/gameResultThisTime?gameId=${gameId}"\n`)
 });
 
 app.get('/gameResultThisTime', (req, res) => {
-  let winnerThisTime = compare(player1Selection, player2Selection, player1, player2, countDraw)
+  let winnerThisTime = compare(player1SelectionLowerLetter, player2SelectionLowerLetter, player1, player2, countDraw)
   // let game = await updateGameById(gameId, {winnerThisTime: winnerThisTime})
-  if (winnerThisTime === "draw") {
+  if (winnerThisTime === 'draw') {
     res.send(`The game is ${winnerThisTime} !!!. To continue please please go to:\n
-curl "http://localhost:8080/player1Selection?gameId=${gameId}&selection1={selection1}"\n`)
+curl "http://localhost:8080/player1Selection?selection1={selection1}"\n`)
   } else {
     res.send(`The winner for this time is ${winnerThisTime}. To continue the game please go to:\n
 curl "http://localhost:8080/gameFinalResult"\n`)
@@ -112,7 +112,7 @@ app.get('/gameFinalResult', async (req, res) => {
   console.log(numberOfPlays)
   countDraw = getCountDraw()
   console.log(countDraw)
-  let winnerAll = checkIfGameOver(countp1, countp2, numberOfPlays, player1, player2,gameId, countDraw);
+  let winnerAll = checkIfGameOver(countp1, countp2, numberOfPlays, player1, player2,gameId);
   let game = await updateGameById(gameId, { player1TotalWin: countp1, player2TotalWin: countp2, 
     ActualTotalNumberOfPlays: countp1+countp2+countDraw, numberOfDrawPlays: countDraw })
   res.send(winnerAll);

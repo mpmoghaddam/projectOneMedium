@@ -9,7 +9,7 @@ let player2SelectionLowerLetter;
 let gameId;
 
 let startGame = () => {
-  console.log(`curl"http://localhost:8080/startGame"`)
+  console.log(`curl "http://localhost:8080/startGame"`)
 }
 
 // const loadStartGame= async (id) => {
@@ -22,8 +22,8 @@ let startGame = () => {
 // }
 const chooseNumberOfGame = (numberOfPlaysInput, gameId) => {
   numberOfPlays = numberOfPlaysInput;
-  if (numberOfPlaysInput % 2 === 0 || numberOfPlaysInput <= 1 || isNaN(numberOfPlaysInput)){
-
+  if (numberOfPlaysInput % 2 === 0  || isNaN(numberOfPlaysInput)){
+    // || numberOfPlaysInput <= 1
     return `Please enter an odd number and greater than one.`;
 
   } else {
@@ -54,16 +54,17 @@ const checkIfGameOver = (countp1, countp2, numberOfPlays, player1, player2, game
     
     return `The game is over. ${player1Name} won ${countp1} time(s), ${player2Name} won ${countp2} time(s) out of ${countp1+ countp2+ countDraw} total plays.`
   } else {
-    return `The game ISNOT over. Please continue playing the game by using this link:,\n
+    return `The game IS NOT over. Please continue playing the game by using this link:,\n
 curl "http://localhost:8080/player1Selection?selection1={selection1}"\n`
   }
 }
 
-function compare(a, b, c, d, f) {
-  if (a === "rock") {
-    if (b === "rock" ) {
+function compare(a, b, c, d) {
+  if (a === 'rock') {
+
+    if (b === 'rock' ) {
       countDraw++
-      return "draw"
+      return 'draw'
     } else if (b === "paper") {
       countp2++
       return d;
@@ -72,26 +73,26 @@ function compare(a, b, c, d, f) {
       return c;
     }
   } else if (a === "paper") {
-    if (b === "rock") {
+    if (b === 'rock') {
       countp1++
       return c;
-    } else if (b === "paper") {
+    } else if (b === 'paper') {
       countDraw++
-      return "draw";
-    } else if (b === "scissors" ) {
+      return 'draw';
+    } else if (b === 'scissors' ) {
       countp2++
       return d;
     }
-  } else if (a === "scissors") {
-    if (b === "rock") {
+  } else if (a === 'scissors') {
+    if (b === 'rock') {
       countp2++
       return d;
-    } else if (b === "paper") {
+    } else if (b === 'paper') {
       countp1++
       return c;
-    } else if (b === "scissors") {
+    } else if (b === 'scissors') {
       countDraw++
-      return "draw";
+      return 'draw';
     }
   }
 }
